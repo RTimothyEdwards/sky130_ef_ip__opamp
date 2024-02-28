@@ -1,0 +1,35 @@
+Analog IP design example: Instrumentation amplifier
+
+This is a simple instrumentation amplifier demonstrating the use
+of the CACE system.
+
+Requires the CACE system to run testbenches:
+
+	https://github.com/efabless/cace
+
+Schematics for this amplifier are done in xschem and can be found in the
+xschem/ directory.  Layouts for this amplifier are done in magic and can
+be found in the mag/ directory.
+
+The CACE specification is in cace/project.txt.  Testbench schematics are
+in the cace/ directory.  Note that testbenches are editable in xschem,
+and netlists can be generated, but netlists contain variables that must
+be substituted by CACE and cannot simulate prior to variable substitution
+by CACE.
+
+To run cace in GUI mode:
+
+	/path/to/cace_gui.py cace/project.txt
+
+CACE can also be run from the command line as:
+
+	/path/to/cace.py cace/project.txt cace/project_out.txt -source=schematic \
+		-param=<parameter_name> -summary"
+
+Prerequisite design tools:
+
+	xschem:  https://github.com/stefanschippers/xschem
+	ngspice: git://git.code.sf.net/p/ngspice/ngspice
+	magic:	 https://github.com/RTimothyEdwards/magic
+	CACE:	 https://github.com/efabless/cace
+

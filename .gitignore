@@ -5,3 +5,4 @@ ngspice/*
 netlist/*
 spice/*
 xschem/xschemrc
+.spiceinit
