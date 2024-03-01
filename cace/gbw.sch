@@ -83,10 +83,12 @@ C {devices/code_shown.sym} -1410 -320 0 0 {name=CONTROL only_toplevel=false valu
 ac dec 10 1e2 1e12
 let vog = (mag(V(out)) / mag(V(inp)))
 let vph = 28.64789 * unwrap(phase(V(out)) - phase(V(inp)))
+* failsafe if phase does not reach -180 or measurement fails
+let fbw = 0
+let pm = 0
+let gm = minimum(vog)
 meas ac fbw WHEN vog=1 FALL=1
 meas ac pm FIND vph WHEN vog=1 FALL=1
-* failsafe if phase does not reach -180
-let gm = minimum(vog)
 meas ac gm FIND vog WHEN vph=-180 FALL=1
 let gainbw = 2.0 * $&fbw
 let gmargin = 20 * log($&gm)
