@@ -86,7 +86,7 @@ noise V(out) VVcm lin 2 \{frequency\} [\{frequency\} + 1]
 setplot noise1
 let vn = sqrt(onoise_spectrum[0])
 set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&vn
+echo $&vn > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

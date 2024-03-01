@@ -299,7 +299,7 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	voltage_out.spice
-		format:		ascii .data null result
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd
@@ -335,7 +335,7 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	voltage_out.spice
-		format:		ascii .data null result
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd
@@ -372,7 +372,7 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	input_offset.spice
-		format:		ascii .data null result null
+		format:		ascii .data result null
 	}
 	conditions {
 		name: Vvdd
@@ -411,13 +411,14 @@ electrical_parameters {
 	display:	Open-loop Voltage Gain
 	unit:		dB
 	spec {
+		minimum:	any
 		typical:	260
+		maximum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	avo.spice
-		format:		ascii .data null result
-		collate:	Vcm
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd
@@ -456,8 +457,7 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	gbw.spice
-		format:		ascii .data null result null null
-		collate:	Vcm
+		format:		ascii .data result null null
 	}
 	conditions {
 		name: Vvdd
@@ -500,7 +500,7 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	slew_rise.spice
-		format:		ascii .data null result null
+		format:		ascii .data result null
 	}
 	conditions {
 		name: Vvdd
@@ -539,7 +539,7 @@ electrical_parameters {
 	simulate {
 		tool:		ngspice
 		template:	slew_fall.spice
-		format:		ascii .data null result null
+		format:		ascii .data result null
 	}
 	conditions {
 		name: Vvdd
@@ -571,12 +571,14 @@ electrical_parameters {
 	display:	Full Power Bandwidth
 	unit:		MHz
 	spec {
+		minimum:	any
 		typical:	80
+		maximum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	slew_fall.spice
-		format:		ascii .data null null result
+		format:		ascii .data null result
 	}
 	conditions {
 		name: Vvdd
@@ -608,12 +610,14 @@ electrical_parameters {
 	display:	Phase Margin
 	unit:		{degrees}
 	spec {
+		minimum:	any
 		typical:	270
+		maximum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	gbw.spice
-		format:		ascii .data null null result null
+		format:		ascii .data null result null
 	}
 	conditions {
 		name: Vvdd
@@ -649,12 +653,14 @@ electrical_parameters {
 	display:	Gain Margin
 	unit:		dB
 	spec {
+		minimum:	any
 		typical:	-100
+		maximum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	gbw.spice
-		format:		ascii .data null null null result
+		format:		ascii .data null null result
 	}
 	conditions {
 		name: Vvdd
@@ -690,12 +696,14 @@ electrical_parameters {
 	display:	Equivalent Input Noise Voltage @ 1kHz
 	unit:		nV/{sqrt}Hz
 	spec {
+		minimum:	any
 		typical:	280
+		maximum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	eqvnoise.spice
-		format:		ascii .data null result
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd
@@ -732,12 +740,14 @@ electrical_parameters {
 	display:	Equivalent Input Noise Voltage @ 10kHz
 	unit:		nV/{sqrt}Hz
 	spec {
+		minimum:	any
 		typical:	100
+		maximum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	eqvnoise.spice
-		format:		ascii .data null result
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd
@@ -776,11 +786,12 @@ electrical_parameters {
 	spec {
 		maximum:	-50	fail
 		typical:	any
+		minimum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	cmrr.spice
-		format:		ascii .data null result
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd
@@ -821,11 +832,12 @@ electrical_parameters {
 	spec {
 		maximum:	-45	fail
 		typical:	any
+		minimum:	any
 	}
 	simulate {
 		tool:		ngspice
 		template:	psrr.spice
-		format:		ascii .data null result
+		format:		ascii .data result
 	}
 	conditions {
 		name: Vvdd

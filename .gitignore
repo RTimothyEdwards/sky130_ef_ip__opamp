@@ -1,8 +1,13 @@
-cace/*spice
+cace/*.spice
 cace/xschemrc
-cace/project_out.txt
+cace/sky130_ef_ip__instramp_out.txt
 ngspice/*
 netlist/*
 spice/*
 xschem/xschemrc
+xschem/*.spice
+mag/*.ext
+mag/*.res.ext
+mag/*.nodes
+mag/*.sim
 .spiceinit

@@ -73,7 +73,7 @@ C {devices/code_shown.sym} -1210 -330 0 0 {name=CONTROL only_toplevel=false valu
 op
 let vtest = V(out)
 set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&vtest
+echo $&vtest > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

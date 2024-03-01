@@ -77,8 +77,7 @@ let vres = 2.0 / ($&tlow - $&thigh)
 * vres2 is the full-power bandwidth (fpbw)
 let vres2 = $&vres / (3.1415926 * \{Vvdd\})
 
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&vres $&vres2
+echo $&vres $&vres2 > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

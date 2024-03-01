@@ -87,8 +87,8 @@ let vfall = $&vlow - \{Vcm\}
 let voffset = 0.5 * ($&vrise + $&vfall)
 let vhyst = $&vrise - $&vfall
 
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&voffset $&vhyst
+echo $&voffset $&vhyst > \{simpath\}/\{filename\}_\{N\}.data
+*set wr_singlescale
 *wrdata \{simpath\}/\{filename\}_\{N\}.data V(out) V(inp) V(inm)
 quit
 .endc

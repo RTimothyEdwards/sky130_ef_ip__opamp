@@ -91,8 +91,7 @@ let voffset2 = 0.5 * ($&vhigh2 + $&vlow2)
 let psrr = ($&voffset1 - $&voffset2) / (\{Vvdd|maximum\} - \{Vvdd|minimum\})
 let psrrdb = 20 * log(abs($&psrr))
 
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&psrrdb
+echo $&psrrdb > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

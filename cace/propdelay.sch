@@ -74,8 +74,7 @@ tran 1e-9 2e-6
 meas tran trise WHEN V(out) = [{Vvdd\} / 2] CROSS=1
 let tpd = $&trise - 500e-9
 
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&tpd
+echo $&tpd > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

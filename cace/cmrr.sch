@@ -91,8 +91,7 @@ let voffset2 = 0.5 * ($&vhigh2 + $&vlow2) - \{Vcm|maximum\}
 let cmrr = ($&voffset1 - $&voffset2) / (\{Vcm|maximum\} - \{Vcm|minimum\})
 let cmrrdb = 20 * log(abs($&cmrr))
 
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&cmrrdb
+echo $&cmrrdb > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

@@ -80,7 +80,7 @@ C {devices/lab_pin.sym} -490 -20 0 1 {name=p29 sig_type=std_logic lab=ena}
 C {devices/vsource.sym} -720 250 0 0 {name=Vvdd value="DC \{Vvdd\}" savecurrent=false}
 C {devices/code_shown.sym} -1410 -320 0 0 {name=CONTROL only_toplevel=false value=".control
 * Closed loop gain at 2x measured from 100 Hz to 100kHz
-ac dec 8 1e2 1e10
+ac dec 10 1e2 1e12
 let vog = (mag(V(out)) / mag(V(inp)))
 let vph = 28.64789 * unwrap(phase(V(out)) - phase(V(inp)))
 meas ac fbw WHEN vog=1 FALL=1
@@ -91,8 +91,7 @@ meas ac gm FIND vog WHEN vph=-180 FALL=1
 let gainbw = 2.0 * $&fbw
 let gmargin = 20 * log($&gm)
 let pmargin = 180 + $&pm
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&gainbw $&pmargin $&gmargin
+echo $&gainbw $&pmargin $&gmargin > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}

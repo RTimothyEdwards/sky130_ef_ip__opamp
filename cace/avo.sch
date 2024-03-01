@@ -83,8 +83,7 @@ C {devices/code_shown.sym} -1220 -350 0 0 {name=CONTROL only_toplevel=false valu
 ac dec 4 1e2 1e5
 let vog = 20 * log(V(out) / V(inm))
 meas ac vres MAX vog
-set wr_singlescale
-wrdata \{simpath\}/\{filename\}_\{N\}.data $&vres
+echo $&vres > \{simpath\}/\{filename\}_\{N\}.data
 quit
 .endc
 "}
