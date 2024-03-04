@@ -62,7 +62,8 @@ N 260 150 260 280 {
 lab=VSUB}
 N -380 90 260 90 {
 lab=inx}
-N -380 -160 -380 90 {}
+N -380 -160 -380 90 {
+lab=inx}
 C {devices/vsource.sym} -600 250 0 0 {name=VVcm value="DC \{Vcm\}" savecurrent=false}
 C {devices/lab_pin.sym} -740 280 0 0 {name=p1 sig_type=std_logic lab=VSUB}
 C {devices/vsource.sym} -490 250 0 0 {name=Vena value="DC [\{ena\} * \{Vdvdd\}]" savecurrent=false}
@@ -103,9 +104,9 @@ C {devices/res.sym} -420 310 0 0 {name=RSUB
 value=0.01
 device=resistor}
 C {devices/gnd.sym} -420 340 0 0 {name=l1 lab=GND}
-C {dut.sym} 130 -140 0 0 {name=XDUT}
 C {devices/lab_pin.sym} -600 -160 0 1 {name=p2 sig_type=std_logic lab=inp}
 C {devices/vcvs.sym} 260 120 0 1 {name=Evdrv value=1.0}
 C {devices/lab_pin.sym} -380 90 0 0 {name=p3 sig_type=std_logic lab=inx}
 C {devices/vsource.sym} -290 -130 0 0 {name=VVdiff value="DC 0 AC 1" savecurrent=false}
 C {devices/lab_wire.sym} -150 -100 0 1 {name=p4 sig_type=std_logic lab=inm}
+C {xschem/sky130_ef_ip__instramp.sym} 130 -140 0 0 {name=x1}

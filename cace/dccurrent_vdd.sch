@@ -90,7 +90,7 @@ C {devices/res.sym} -420 310 0 0 {name=RSUB
 value=0.01
 device=resistor}
 C {devices/gnd.sym} -420 340 0 0 {name=l1 lab=GND}
-C {dut.sym} 130 -140 0 0 {name=XDUT}
+C {xschem/sky130_ef_ip__instramp.sym} 130 -140 0 0 {name=XDUT}
 C {devices/lab_pin.sym} -600 -180 0 0 {name=p2 sig_type=std_logic lab=inp}
 C {devices/vsource.sym} -600 -130 0 0 {name=VVdiff value="DC \{Vdiff\}" savecurrent=false}
 C {devices/lab_pin.sym} -600 -40 0 0 {name=p3 sig_type=std_logic lab=inm}
