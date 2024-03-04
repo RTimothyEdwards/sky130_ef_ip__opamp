@@ -24,11 +24,10 @@ paths {
 	schematic:	xschem
 	magic:		mag
 	layout:		gds
-	lvs_netlist:	netlist/lvs
-	rcx_netlist:	netlist/rcx
-	schem_netlist:	netlist/schem
+	netlist:	netlist
 	testbench:	cace
 	simulation:	ngspice
+	plots:		plots
 	logs:		ngspice/log
 }
 
@@ -895,6 +894,11 @@ electrical_parameters {
 		+
 		name: Vinp
 		display: Vinp
+		unit: V
+
+		+
+		name: result
+		display: Vout
 		unit: V
 	}
 	conditions {

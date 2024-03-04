@@ -4,6 +4,7 @@ cace/sky130_ef_ip__instramp_out.txt
 ngspice/*
 netlist/*
 spice/*
+plots/*
 xschem/xschemrc
 xschem/*.spice
 mag/*.ext
