@@ -46,6 +46,7 @@ N 610 -1200 610 -1070 {
 lab=GND}
 N 470 -1240 470 -1070 {
 lab=GND}
+N 780 -1110 780 -1070 {}
 C {devices/vsource.sym} 470 -1270 0 0 {name=V1 value=3.3}
 C {devices/res.sym} 1260 -1270 0 0 {name=R1
 value=20k
