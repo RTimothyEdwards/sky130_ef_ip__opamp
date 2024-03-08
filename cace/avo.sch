@@ -109,4 +109,4 @@ C {devices/vcvs.sym} 260 120 0 1 {name=Evdrv value=1.0}
 C {devices/lab_pin.sym} -380 90 0 0 {name=p3 sig_type=std_logic lab=inx}
 C {devices/vsource.sym} -290 -130 0 0 {name=VVdiff value="DC 0 AC 1" savecurrent=false}
 C {devices/lab_wire.sym} -150 -100 0 1 {name=p4 sig_type=std_logic lab=inm}
-C {xschem/sky130_ef_ip__instramp.sym} 130 -140 0 0 {name=x1}
+C {sky130_ef_ip__instramp.sym} 130 -140 0 0 {name=x1}

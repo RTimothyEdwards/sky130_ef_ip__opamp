@@ -97,7 +97,7 @@ C {devices/res.sym} -420 310 0 0 {name=RSUB
 value=0.01
 device=resistor}
 C {devices/gnd.sym} -420 340 0 0 {name=l1 lab=GND}
-C {xschem/sky130_ef_ip__instramp.sym} 130 -140 0 0 {name=XDUT}
+C {sky130_ef_ip__instramp.sym} 130 -140 0 0 {name=XDUT}
 C {devices/lab_pin.sym} -600 -160 0 1 {name=p2 sig_type=std_logic lab=inp}
 C {devices/vcvs.sym} 260 120 0 1 {name=Evdrv value=1.0}
 C {devices/lab_pin.sym} -380 90 0 0 {name=p3 sig_type=std_logic lab=inm}
