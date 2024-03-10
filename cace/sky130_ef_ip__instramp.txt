@@ -27,6 +27,7 @@ paths {
 	netlist:	netlist
 	testbench:	cace
 	simulation:	ngspice
+        reports:	reports
 	plots:		plots
 	logs:		ngspice/log
 }

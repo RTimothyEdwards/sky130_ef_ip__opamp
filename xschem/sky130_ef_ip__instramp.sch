@@ -229,7 +229,7 @@ lab=vcomn2}
 N 2530 -690 2580 -690 {
 lab=inm}
 N 2830 -690 2880 -690 {
-lab=in}
+lab=inp}
 N 2620 -770 2620 -720 {
 lab=#net3}
 N 2790 -770 2790 -720 {
@@ -661,7 +661,7 @@ spiceprefix=X
 C {devices/lab_pin.sym} 3530 -1080 0 0 {name=l20 sig_type=std_logic lab=pdrv2}
 C {sky130_fd_pr/diode.sym} 1210 -620 0 0 {name=XD1
 model=diode_pw2nd_05v5
-area=1
+area=3.6e11
 }
 C {devices/lab_pin.sym} 1310 -560 0 1 {name=l21 sig_type=std_logic lab=vss}
 C {sky130_fd_pr/nfet_g5v0d10v5.sym} 1320 -920 0 0 {name=M13
@@ -680,12 +680,12 @@ spiceprefix=X
 }
 C {sky130_fd_pr/diode.sym} 1110 -850 0 0 {name=XD2
 model=diode_pw2nd_05v5
-area=1
+area=3.6e11
 }
 C {devices/ipin.sym} 1090 -920 0 0 {name=p5 lab=ena}
 C {devices/ipin.sym} 1110 -510 0 0 {name=p6 lab=inm}
 C {sky130_fd_pr/diode.sym} 1210 -480 0 0 {name=XD3
 model=diode_pw2nd_05v5
-area=1
+area=3.6e11
 }
 C {devices/lab_pin.sym} 1310 -420 0 1 {name=l29 sig_type=std_logic lab=vss}
