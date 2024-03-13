@@ -216,8 +216,8 @@ electrical_parameters {
 	unit: 		{micro}A
 	spec {
 		minimum:	any
-		typical:	170
-		maximum:	250	fail
+		typical:	40
+		maximum:	5000	fail
 	}
 	simulate {
 		tool:		ngspice
@@ -235,9 +235,13 @@ electrical_parameters {
 
 		+
 		name: Vcm
-		maximum: 3.3
-		typical: 1.65
-		minimum: 0.0
+		maximum: 2.8
+		minimum: 0.5
+
+		+
+		name: Vdiff
+		typical: 0.5
+		note: Zero-to-peak amplitude of sine input
 
 		+
 		name: temperature
@@ -365,9 +369,9 @@ electrical_parameters {
 	display:	Offset Error
 	unit:		%FSR
 	spec {
-		minimum:	-0.02	fail
+		minimum:	-6	fail
 		typical:	0
-		maximum:	0.01	fail
+		maximum:	0.5	fail
 	}
 	simulate {
 		tool:		ngspice
@@ -411,9 +415,9 @@ electrical_parameters {
 	display:	Open-loop Voltage Gain
 	unit:		dB
 	spec {
-		minimum:	any
-		typical:	260
-		maximum:	any
+		minimum:	100	fail
+		typical:	125
+		maximum:	125	fail	maximum-above
 	}
 	simulate {
 		tool:		ngspice
@@ -432,9 +436,8 @@ electrical_parameters {
 
 		+
 		name: Vcm
-		maximum: 2.97
-		minimum: 0.33
-		note: gain measured at 10% and 90% values
+		typical: 1.65
+		note: AC analysis not dependent on Vcm
 
 		+
 		name: corner
@@ -450,9 +453,9 @@ electrical_parameters {
 	display:	Gain-Bandwidth 
 	unit:		MHz
 	spec {
-		minimum:	180	fail
-		typical:	550
-		maximum:	700
+		minimum:	0.3	fail
+		typical:	4
+		maximum:	7	fail 	maximum-above
 	}
 	simulate {
 		tool:		ngspice
@@ -471,9 +474,8 @@ electrical_parameters {
 
 		+
 		name: Vcm
-		maximum: 2.97
-		minimum: 0.33
-		note: measured at 10% and 90% values
+		typical: 1.65
+		note: AC analysis not dependent on Vcm
 
 		+
 		name: Vdiff
@@ -493,9 +495,9 @@ electrical_parameters {
 	display:	Slew Rate Risetime
 	unit:		V/{micro}s
 	spec {
-		minimum:	1100	fail
-		typical:	1150
-		maximum:	2500
+		minimum:	0.5	fail
+		typical:	12
+		maximum:	30	fail	maximum-above
 	}
 	simulate {
 		tool:		ngspice
@@ -532,9 +534,9 @@ electrical_parameters {
 	display:	Slew Rate Falltime
 	unit:		V/{micro}s
 	spec {
-		minimum:	300	fail
-		typical:	450
-		maximum:	600
+		minimum:	1	fail
+		typical:	25
+		maximum:	45	fail	maximum-above
 	}
 	simulate {
 		tool:		ngspice
@@ -572,7 +574,7 @@ electrical_parameters {
 	unit:		MHz
 	spec {
 		minimum:	any
-		typical:	80
+		typical:	2.5
 		maximum:	any
 	}
 	simulate {
@@ -592,9 +594,8 @@ electrical_parameters {
 
 		+
 		name: Vcm
-		maximum: 2.97
-		minimum: 0.33
-		note: measured at 10% and 90% values
+		typical: 1.65
+		note: AC analysis not dependent on Vcm
 
 		+
 		name: corner
@@ -610,8 +611,8 @@ electrical_parameters {
 	display:	Phase Margin
 	unit:		{degrees}
 	spec {
-		minimum:	any
-		typical:	270
+		minimum:	100	fail
+		typical:	160
 		maximum:	any
 	}
 	simulate {
@@ -631,9 +632,8 @@ electrical_parameters {
 
 		+
 		name: Vcm
-		maximum: 2.97
-		minimum: 0.33
-		note: measured at 10% and 90% values
+		typical: 1.65
+		note: AC analysis not dependent on Vcm
 
 		+
 		name: Vdiff 
@@ -674,9 +674,8 @@ electrical_parameters {
 
 		+
 		name: Vcm
-		maximum: 2.97
-		minimum: 0.33
-		note: measured at 10% and 90% values
+		typical: 1.65
+		note: AC analysis not dependent on Vcm
 
 		+
 		name: Vdiff 
@@ -784,7 +783,7 @@ electrical_parameters {
 	display:	CMRR @ 100kHz
 	unit:		dB
 	spec {
-		maximum:	-50	fail
+		maximum:	-40	fail
 		typical:	any
 		minimum:	any
 	}
@@ -852,10 +851,10 @@ electrical_parameters {
 		minimum: -40
 
 		+
-		name: Vcm
-		maximum: 2.97
-		minimum: 0.33
-		note: measured at 10% and 90% values
+		name: Vcmp
+		maximum: 0.90
+		minimum: 0.10
+		note: fraction of Vdd
 
 		+
 		name: risetime

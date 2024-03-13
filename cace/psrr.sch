@@ -76,7 +76,7 @@ C {devices/capa.sym} 510 -110 0 0 {name=Cout
 value=\{Cout\}}
 C {devices/lab_pin.sym} 550 -80 0 1 {name=p27 sig_type=std_logic lab=VSUB}
 C {devices/lab_pin.sym} -490 40 0 1 {name=p29 sig_type=std_logic lab=ena}
-C {devices/vsource.sym} -600 150 0 0 {name=Vvcm value="DC \{Vcm\}" savecurrent=false}
+C {devices/vsource.sym} -600 150 0 0 {name=Vvcm value="DC [\{Vvdd\} * \{Vcmp\}]" savecurrent=false}
 C {devices/code_shown.sym} -1530 -320 0 0 {name=CONTROL only_toplevel=false value=".control
 ** PSRR is defined as the change in input offset vs. change in power supply.
 tran [\{risetime\} * 2 / 100] [\{risetime\} * 4]
