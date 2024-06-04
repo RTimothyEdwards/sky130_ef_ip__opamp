@@ -1,0 +1,799 @@
+#--------------------------------------------------------------
+# CACE circuit characterization file
+#--------------------------------------------------------------
+
+name: sky130_ef_ip__opamp
+description: Rail-to-rail driver operational amplifier
+commit: N/A
+PDK: sky130A
+cace_format: 5.0
+
+authorship:
+  designer: Tim Edwards
+  company: Efabless Corporation
+  creation_date: January 5, 2024
+  license: Apache 2.0
+
+paths:
+  root: ..
+  documentation: doc
+  schematic: xschem
+  magic: mag
+  layout: gds
+  netlist: netlist
+
+pins:
+  ena:
+    description: Enable input (active low)
+    type: digital
+    direction: input
+    Vmin: vss - 0.3
+    Vmax: vdd + 0.3
+    note: May be 1.8V or 3.3V signal
+  inm:
+    description: amplifier voltage negative input
+    type: signal
+    direction: output
+    Vmin: vss - 0.3
+    Vmax: vdd + 0.3
+  inp:
+    description: amplifier voltage positive input
+    type: signal
+    direction: output
+    Vmin: vss - 0.3
+    Vmax: vdd + 0.3
+  out:
+    description: amplifier voltage output
+    type: signal
+    direction: output
+    Vmin: vss
+    Vmax: vdd
+  vdd:
+    description: Analog power supply
+    type: power
+    direction: inout
+    Vmin: '3.0'
+    Vmax: '3.6'
+  vss:
+    description: Analog ground
+    type: ground
+    direction: inout
+    Vmin: '-0.3'
+    Vmax: '0.3'
+
+default_conditions:
+  Vvdd:
+    description: Analog power supply voltage
+    display: vdd
+    unit: V
+    typical: '3.3'
+  Vvss:
+    description: Analog ground
+    display: vss
+    unit: V
+    typical: '0'
+  Vdvdd:
+    description: Digital power supply voltage
+    display: dvdd
+    unit: V
+    typical: '1.8'
+    note: Reference voltage for the enable input
+  Rout:
+    description: Output load resistance
+    display: RLoad
+    unit: MΩ
+    typical: '100'
+  Cout:
+    description: Output load capacitance
+    display: CLoad
+    unit: fF
+    maximum: '100'
+  ena:
+    description: Amplifier enable
+    display: ena
+    typical: '1'
+  Vcm:
+    description: Common-mode input voltage
+    display: Vcm
+    typical: '1.65'
+  Vdiff:
+    description: Differential input voltage
+    display: Vdiff
+    typical: '0'
+  temperature:
+    description: Ambient temperature
+    display: Temp
+    unit: °C
+    minimum: '-40'
+    typical: '27'
+    maximum: '130'
+  corner:
+    description: Process corner
+    display: Corner
+    minimum: ss
+    typical: tt
+    maximum: ff
+  iterations:
+    description: Iterations to run
+    display: Iterations
+    minimum: '1'
+    maximum: '10'
+    step: linear
+    stepsize: '1'
+
+electrical_parameters:
+  Idd_enabled:
+    description: Current draw through analog supply, amplifier enabled, no load
+    display: Idd
+    unit: µA
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '170'
+      maximum:
+        value: '250'
+        fail: true
+    simulate:
+      ngspice:
+        template: dccurrent_vdd.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - 'null'
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      Vcm:
+        maximum: '3.3'
+        typical: '1.65'
+        minimum: '0.0'
+      temperature:
+        typical: '27'
+      corner:
+        typical: tt
+  Idd_dynamic:
+    description: Current draw through analog supply, amplifier enabled, no load
+    display: Idd (dynamic)
+    unit: µA
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '40'
+      maximum:
+        value: '5000'
+        fail: true
+    simulate:
+      ngspice:
+        template: dccurrent_dyn.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - 'null'
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      frequency:
+        typical: '1'
+        unit: kHz
+      Vcm:
+        maximum: '2.8'
+        minimum: '0.5'
+      Vdiff:
+        typical: '0.5'
+        note: Zero-to-peak amplitude of sine input
+      temperature:
+        typical: '27'
+      corner:
+        typical: tt
+  Idd_disabled:
+    description: Current draw through analog supply, amplifier disabled
+    display: Standby current
+    unit: µA
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '170'
+      maximum:
+        value: '250'
+        fail: true
+    simulate:
+      ngspice:
+        template: dccurrent_vdd.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - 'null'
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      Vcm:
+        maximum: '3.3'
+        typical: '1.65'
+        minimum: '0.0'
+      ena:
+        typical: '0'
+      temperature:
+        typical: '27'
+      corner:
+        typical: tt
+  Vol:
+    description: Output voltage low
+    display: Output voltage low (Vol)
+    unit: V
+    spec:
+      maximum:
+        value: '0.1'
+        fail: true
+      typical:
+        value: any
+    simulate:
+      ngspice:
+        template: voltage_out.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      Vdiff:
+        typical: '-1'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  Voh:
+    description: Output voltage high
+    display: Output voltage high (Voh)
+    unit: V
+    spec:
+      minimum:
+        value: '2.4'
+        fail: true
+      typical:
+        value: any
+    simulate:
+      ngspice:
+        template: voltage_out.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      Vdiff:
+        typical: '1'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  offset_error:
+    description: Output offset error
+    display: Offset Error
+    unit: '%FSR'
+    spec:
+      minimum:
+        value: '-6'
+        fail: true
+      typical:
+        value: '0'
+      maximum:
+        value: '0.5'
+        fail: true
+    simulate:
+      ngspice:
+        template: input_offset.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+        - 'null'
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      risetime:
+        display: Trise
+        unit: ms
+        typical: '50'
+        note: Ramp rate of Vdiff for input offset measurement
+      Vcm:
+        minimum: '0.33'
+        maximum: '2.97'
+        note: offset measured at 10% and 90% values
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  avo:
+    description: open loop voltage gain
+    display: Open-loop Voltage Gain
+    unit: dB
+    spec:
+      minimum:
+        value: '100'
+        fail: true
+      typical:
+        value: '125'
+      maximum:
+        value: '125'
+        fail: true
+        calculation: maximum-above
+    simulate:
+      ngspice:
+        template: avo.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        typical: '1.65'
+        note: AC analysis not dependent on Vcm
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  gain_bandwidth:
+    description: Gain Bandwidth Product
+    display: Gain-Bandwidth
+    unit: MHz
+    spec:
+      minimum:
+        value: '0.3'
+        fail: true
+      typical:
+        value: '4'
+      maximum:
+        value: '7'
+        fail: true
+        calculation: maximum-above
+    simulate:
+      ngspice:
+        template: gbw.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+        - 'null'
+        - 'null'
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        typical: '1.65'
+        note: AC analysis not dependent on Vcm
+      Vdiff:
+        typical: '0.1'
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  slewrate_rise:
+    description: Slew Rate Risetime
+    display: Slew Rate Risetime
+    unit: V/µs
+    spec:
+      minimum:
+        value: '0.5'
+        fail: true
+      typical:
+        value: '12'
+      maximum:
+        value: '30'
+        fail: true
+        calculation: maximum-above
+    simulate:
+      ngspice:
+        template: slew_rise.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+        - 'null'
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        maximum: '2.97'
+        minimum: '0.33'
+        note: measured at 10% and 90% values
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  slewrate_fall:
+    description: Slew Rate Falltime
+    display: Slew Rate Falltime
+    unit: V/µs
+    spec:
+      minimum:
+        value: '1'
+        fail: true
+      typical:
+        value: '25'
+      maximum:
+        value: '45'
+        fail: true
+        calculation: maximum-above
+    simulate:
+      ngspice:
+        template: slew_fall.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+        - 'null'
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        maximum: '2.97'
+        minimum: '0.33'
+        note: measured at 10% and 90% values
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  full_power_bandwidth:
+    description: Full Power Bandwidth
+    display: Full Power Bandwidth
+    unit: MHz
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '2.5'
+      maximum:
+        value: any
+    simulate:
+      ngspice:
+        template: slew_fall.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - 'null'
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        typical: '1.65'
+        note: AC analysis not dependent on Vcm
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  phase_margin:
+    description: Phase margin
+    display: Phase Margin
+    unit: °
+    spec:
+      minimum:
+        value: '100'
+        fail: true
+      typical:
+        value: '160'
+      maximum:
+        value: any
+    simulate:
+      ngspice:
+        template: gbw.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - 'null'
+        - result
+        - 'null'
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        typical: '1.65'
+        note: AC analysis not dependent on Vcm
+      Vdiff:
+        typical: '0.1'
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  gain_margin:
+    status: active
+    description: Gain margin
+    display: Gain Margin
+    unit: dB
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '-100'
+      maximum:
+        value: any
+    simulate:
+      ngspice:
+        template: gbw.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - 'null'
+        - 'null'
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        typical: '1.65'
+        note: AC analysis not dependent on Vcm
+      Vdiff:
+        typical: '0.1'
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  equiv_noise_1k:
+    description: Equivalent Input Noise Voltage @ 1kHz
+    display: Equivalent Input Noise Voltage @ 1kHz
+    unit: nV/√Hz
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '280'
+      maximum:
+        value: any
+    simulate:
+      ngspice:
+        template: eqvnoise.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      frequency:
+        typical: '1'
+        unit: kHz
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        maximum: '2.97'
+        minimum: '0.33'
+        note: measured at 10% and 90% values
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  equiv_noise_10k:
+    description: Equivalent Input Noise Voltage @ 10kHz
+    display: Equivalent Input Noise Voltage @ 10kHz
+    unit: nV/√Hz
+    spec:
+      minimum:
+        value: any
+      typical:
+        value: '100'
+      maximum:
+        value: any
+    simulate:
+      ngspice:
+        template: eqvnoise.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      frequency:
+        typical: '10'
+        unit: kHz
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        maximum: '2.97'
+        minimum: '0.33'
+        note: measured at 10% and 90% values
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  cmrr_100k:
+    description: CMRR @ 100kHz
+    display: CMRR @ 100kHz
+    unit: dB
+    spec:
+      maximum:
+        value: '-40'
+        fail: true
+      typical:
+        value: any
+      minimum:
+        value: any
+    simulate:
+      ngspice:
+        template: cmrr.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcm:
+        maximum: '2.97'
+        minimum: '0.33'
+        note: measured at 10% and 90% values
+      risetime:
+        display: Trise
+        unit: ms
+        typical: '50'
+        note: Ramp rate of Vdiff for CMRR measurement
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  psrr_100k:
+    description: PSRR @ 100kHz
+    display: PSRR @ 100kHz
+    unit: dB
+    spec:
+      maximum:
+        value: '-45'
+        fail: true
+      typical:
+        value: any
+      minimum:
+        value: any
+    simulate:
+      ngspice:
+        template: psrr.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - result
+    conditions:
+      Vvdd:
+        minimum: '2.3'
+        maximum: '3.3'
+        note: Measured with 1V p-p signal on power supply
+      temperature:
+        maximum: '110'
+        typical: '27'
+        minimum: '-40'
+      Vcmp:
+        maximum: '0.90'
+        minimum: '0.10'
+        note: fraction of Vdd
+      risetime:
+        display: Trise
+        unit: ms
+        typical: '50'
+        note: Ramp rate of Vdiff for PSRR measurement
+      corner:
+        minimum: ss
+        typical: tt
+        maximum: ff
+  transient_response:
+    description: Large signal transient response
+    display: Large signal transient response (Unity gain configuration, 2Vpp)
+    status: skip
+    unit: mV
+    simulate:
+      ngspice:
+        template: transient.spice
+        format: ascii
+        suffix: .data
+        variables:
+        - time
+        - result
+        - Vinp
+    plot:
+      filename: transient.png
+      xaxis: time
+      yaxis: result
+    variables:
+      time:
+        display: Time
+        unit: ms
+      Vinp:
+        display: Vinp
+        unit: V
+      result:
+        display: Vout
+        unit: V
+    conditions:
+      Vvdd:
+        typical: '3.3'
+      Tmax:
+        display: Simulation time
+        unit: ns
+        typical: '4000'
+      temperature:
+        typical: '27'
+      corner:
+        typical: tt
+physical_parameters:
+  area:
+    description: Total circuit layout area
+    display: area
+    unit: µm²
+    spec:
+      maximum:
+        value: '50000'
+        fail: true
+    evaluate: cace_area
+  LVS_errors:
+    description: LVS errors
+    display: LVS errors
+    spec:
+      maximum:
+        value: '0'
+        fail: true
+    evaluate:
+      cace_lvs:
+        script: run_project_lvs.tcl
+  DRC_errors:
+    description: DRC errors
+    display: DRC errors
+    spec:
+      maximum:
+        value: '0'
+        fail: true
+    evaluate: cace_drc

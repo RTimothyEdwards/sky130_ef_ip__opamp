@@ -29,7 +29,7 @@
 `default_nettype none
 `timescale 1 ns / 1 ps
 
-module sky130_ef_ip__instramp #(parameter FUNCTIONAL = 1)(
+module sky130_ef_ip__opamp #(parameter FUNCTIONAL = 1)(
 `ifdef USE_POWER_PINS
    input       vdd,
    input       vss,
