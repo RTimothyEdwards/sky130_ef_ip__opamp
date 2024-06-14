@@ -1,0 +1,40 @@
+name: CI
+
+# Events that trigger workflow
+on:
+  # Runs on all pushes to branches
+  push:
+  # Runs on all PRs
+  pull_request:
+  # Runs every day at midnight UTC
+  schedule:
+    - cron: "0 0 * * *"
+  # Manual Dispatch
+  workflow_dispatch:
+
+jobs:
+  run-cace:
+    runs-on: ubuntu-22.04
+    name: Run CACE
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      # Run CACE on the design
+      - name: Setup Environment and Run CACE
+        uses: efabless/cace-action@main
+        with:
+          pdk_family: 'sky130'
+          cace_root: '.'
+          cace_datasheet: 'cace/sky130_ef_ip__opamp.yaml'
+          cace_source: 'schematic'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      # Upload artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: runs
+          path: |
+            ${{ github.workspace }}/runs/
+      # Add summary
+      - name: Add Markdown to Step Summary
+        run: cat runs/*/summary.md >> $GITHUB_STEP_SUMMARY

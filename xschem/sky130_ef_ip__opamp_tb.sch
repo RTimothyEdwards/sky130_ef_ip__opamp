@@ -71,7 +71,7 @@ plot V(in) - V(out)
 .endc"}
 C {devices/lab_pin.sym} 470 -1300 0 0 {name=l3 sig_type=std_logic lab=vdd3v3}
 C {devices/lab_pin.sym} 610 -1280 0 0 {name=l5 sig_type=std_logic lab=in}
-C {sky130_ef_ip__instramp.sym} 1030 -1300 0 0 {name=x1}
+C {sky130_ef_ip__opamp.sym} 1030 -1300 0 0 {name=x1}
 C {devices/vsource.sym} 780 -1140 0 0 {name=V3 value=3.3}
 C {devices/gnd.sym} 740 -1070 0 0 {name=l4 lab=GND}
 C {devices/lab_pin.sym} 780 -1210 0 0 {name=p2 sig_type=std_logic lab=ena}

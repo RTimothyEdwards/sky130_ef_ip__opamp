@@ -1,11 +1,8 @@
-cace/*.spice
-cace/xschemrc
-cace/sky130_ef_ip__instramp_out.txt
-cace/sky130_ef_ip__instramp.sym
-ngspice/*
+cace/templates/xschemrc
+cace/templates/*.sym
+cace/templates/*.spice
+runs/*
 netlist/*
-spice/*
-plots/*
 xschem/xschemrc
 xschem/*.spice
 mag/*.ext
