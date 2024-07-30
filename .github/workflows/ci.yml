@@ -26,7 +26,7 @@ jobs:
           pdk_family: 'sky130'
           cace_root: '.'
           cace_datasheet: 'cace/sky130_ef_ip__opamp.yaml'
-          cace_source: 'layout'
+          cace_source: 'rcx'
           token: ${{ secrets.GITHUB_TOKEN }}
       # Upload artifacts
       - name: Upload Artifacts
