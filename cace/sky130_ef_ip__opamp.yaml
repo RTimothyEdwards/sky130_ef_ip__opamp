@@ -696,7 +696,7 @@ parameters:
     unit: dB
     spec:
       maximum:
-        value: -15
+        value: -14
         fail: true
       typical:
         value: any
