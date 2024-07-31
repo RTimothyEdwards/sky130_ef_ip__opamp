@@ -386,7 +386,7 @@ C {devices/ipin.sym} 1110 -650 0 0 {name=p1 lab=inp}
 C {devices/ipin.sym} 1220 -1180 0 0 {name=p2 lab=vdd}
 C {devices/ipin.sym} 1090 -760 0 0 {name=p3 lab=vss}
 C {devices/opin.sym} 3290 -940 0 0 {name=p4 lab=out}
-C {sky130_fd_pr/res_xhigh_po.sym} 1340 -1010 0 0 {name=R1
+C {sky130_fd_pr/res_xhigh_po_0p35.sym} 1340 -1010 0 0 {name=R1
 L=100
 model=res_xhigh_po_0p35
 spiceprefix=X

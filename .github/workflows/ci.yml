@@ -16,7 +16,7 @@ jobs:
   run-cace:
     runs-on: ubuntu-22.04
     name: Run CACE
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3
       # Run CACE on the design
@@ -26,7 +26,7 @@ jobs:
           pdk_family: 'sky130'
           cace_root: '.'
           cace_datasheet: 'cace/sky130_ef_ip__opamp.yaml'
-          cace_source: 'schematic'
+          cace_source: 'rcx'
           token: ${{ secrets.GITHUB_TOKEN }}
       # Upload artifacts
       - name: Upload Artifacts
