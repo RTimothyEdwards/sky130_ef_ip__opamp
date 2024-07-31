@@ -16,7 +16,7 @@ jobs:
   run-cace:
     runs-on: ubuntu-22.04
     name: Run CACE
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3
       # Run CACE on the design
