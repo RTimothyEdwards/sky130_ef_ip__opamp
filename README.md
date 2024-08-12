@@ -7,13 +7,13 @@ Schematics for this amplifier are done in xschem and can be found in the `xschem
 
 The CACE specification is in `cace/sky130_ef_ip__opamp.yaml`.  Testbench schematics are in the `cace/templates/` directory. Note that testbenches are editable in xschem, and netlists can be generated, but netlists contain variables that must be substituted by CACE and cannot simulate prior to variable substitution by CACE.
 
-To run CACE in GUI mode:
+To run characterization with CACE:
 
 ```console
-cace-gui cace/sky130_ef_ip__opamp.yaml
+cace
 ```
 
-CACE can also be run from the command line, for example as:
+CACE can also be run with different arguments, for example:
 
 ```console
 cace cace/sky130_ef_ip__opamp.yaml --source schematic --parameter=<parameter_name>
