@@ -5,7 +5,7 @@
 name: sky130_ef_ip__opamp
 description: Rail-to-rail driver operational amplifier
 PDK: sky130A
-cace_format: 5.0
+cace_format: 5.2
 
 authorship:
   designer: Tim Edwards
@@ -15,11 +15,11 @@ authorship:
 
 paths:
   root: ..
-  documentation: doc
   schematic: xschem
   magic: mag
   layout: gds
   netlist: netlist
+  documentation: docs
 
 pins:
   ena:
@@ -126,20 +126,19 @@ parameters:
     display: Idd
     unit: µA
     spec:
-      minimum:
-        value: any
-      typical:
-        value: 170
-      maximum:
-        value: 250
+      result:
+        minimum:
+          value: any
+        typical:
+          value: 170
+        maximum:
+          value: 250
     tool:
       ngspice:
         template: dccurrent_vdd.sch
         format: ascii
         suffix: .data
-        variables:
-        - null
-        - result
+        variables: [null, result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -156,20 +155,19 @@ parameters:
     display: Idd (dynamic)
     unit: µA
     spec:
-      minimum:
-        value: any
-      typical:
-        value: 40
-      maximum:
-        value: 6500
+      result:
+        minimum:
+          value: any
+        typical:
+          value: 40
+        maximum:
+          value: 6500
     tool:
       ngspice:
         template: dccurrent_dyn.sch
         format: ascii
         suffix: .data
-        variables:
-        - null
-        - result
+        variables: [null, result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -191,21 +189,20 @@ parameters:
     display: Standby current
     unit: µA
     spec:
-      minimum:
-        value: any
-      typical:
-        value: 170
-      maximum:
-        value: 250
-        fail: true
+      result:
+        minimum:
+          value: any
+        typical:
+          value: 170
+        maximum:
+          value: 250
+          fail: true
     tool:
       ngspice:
         template: dccurrent_vdd.sch
         format: ascii
         suffix: .data
-        variables:
-        - null
-        - result
+        variables: [null, result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -224,18 +221,18 @@ parameters:
     display: Output voltage low (Vol)
     unit: V
     spec:
-      maximum:
-        value: 0.1
-        fail: true
-      typical:
-        value: any
+      result:
+        maximum:
+          value: 0.1
+          fail: true
+        typical:
+          value: any
     tool:
       ngspice:
         template: voltage_out.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -254,18 +251,18 @@ parameters:
     display: Output voltage high (Voh)
     unit: V
     spec:
-      minimum:
-        value: 2.4
-        fail: true
-      typical:
-        value: any
+      result:
+        minimum:
+          value: 2.4
+          fail: true
+        typical:
+          value: any
     tool:
       ngspice:
         template: voltage_out.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -284,22 +281,21 @@ parameters:
     display: Offset Error
     unit: '%FSR'
     spec:
-      minimum:
-        value: -35
-        fail: true
-      typical:
-        value: 0
-      maximum:
-        value: 0.5
-        fail: true
+      result:
+        minimum:
+          value: -35
+          fail: true
+        typical:
+          value: 0
+        maximum:
+          value: 0.5
+          fail: true
     tool:
       ngspice:
         template: input_offset.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
-        - null
+        variables: [result, null]
     conditions:
       Vvdd:
         typical: 3.3
@@ -325,23 +321,23 @@ parameters:
     display: Open-loop Voltage Gain
     unit: dB
     spec:
-      minimum:
-        value: 100
-        fail: true
-      typical:
-        value: 125
-      maximum:
-        value: 125
-        fail: true
-        calculation: maximum
-        limit: above
+      result:
+        minimum:
+          value: 100
+          fail: true
+        typical:
+          value: 125
+        maximum:
+          value: 125
+          fail: true
+          calculation: maximum
+          limit: above
     tool:
       ngspice:
         template: avo.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -361,25 +357,23 @@ parameters:
     display: Gain-Bandwidth
     unit: MHz
     spec:
-      minimum:
-        value: 0
-        fail: true
-      typical:
-        value: 4
-      maximum:
-        value: 4
-        fail: true
-        calculation: maximum
-        limit: above
+      result:
+        minimum:
+          value: 0
+          fail: true
+        typical:
+          value: 4
+        maximum:
+          value: 4
+          fail: true
+          calculation: maximum
+          limit: above
     tool:
       ngspice:
         template: gbw.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
-        - null
-        - null
+        variables: [result, null, null]
     conditions:
       Vvdd:
         typical: 3.3
@@ -401,24 +395,23 @@ parameters:
     display: Slew Rate Risetime
     unit: V/µs
     spec:
-      minimum:
-        value: 0.5
-        fail: true
-      typical:
-        value: 10
-      maximum:
-        value: 20
-        fail: true
-        calculation: maximum
-        limit: above
+      result:
+        minimum:
+          value: 0.5
+          fail: true
+        typical:
+          value: 10
+        maximum:
+          value: 20
+          fail: true
+          calculation: maximum
+          limit: above
     tool:
       ngspice:
         template: slew_rise.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
-        - null
+        variables: [result, null]
     conditions:
       Vvdd:
         typical: 3.3
@@ -439,24 +432,23 @@ parameters:
     display: Slew Rate Falltime
     unit: V/µs
     spec:
-      minimum:
-        value: 1
-        fail: true
-      typical:
-        value: 10
-      maximum:
-        value: 25
-        fail: true
-        calculation: maximum
-        limit: above
+      result:
+        minimum:
+          value: 1
+          fail: true
+        typical:
+          value: 10
+        maximum:
+          value: 25
+          fail: true
+          calculation: maximum
+          limit: above
     tool:
       ngspice:
         template: slew_fall.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
-        - null
+        variables: [result, null]
     conditions:
       Vvdd:
         typical: 3.3
@@ -477,20 +469,19 @@ parameters:
     display: Full Power Bandwidth
     unit: MHz
     spec:
-      minimum:
-        value: any
-      typical:
-        value: 2.5
-      maximum:
-        value: any
+      result:
+        minimum:
+          value: any
+        typical:
+          value: 2.5
+        maximum:
+          value: any
     tool:
       ngspice:
         template: slew_fall.sch
         format: ascii
         suffix: .data
-        variables:
-        - null
-        - result
+        variables: [null, result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -510,22 +501,20 @@ parameters:
     display: Phase Margin
     unit: °
     spec:
-      minimum:
-        value: 100
-        fail: true
-      typical:
-        value: 160
-      maximum:
-        value: any
+      result:
+        minimum:
+          value: 100
+          fail: true
+        typical:
+          value: 160
+        maximum:
+          value: any
     tool:
       ngspice:
         template: gbw.sch
         format: ascii
         suffix: .data
-        variables:
-        - null
-        - result
-        - null
+        variables: [null, result, null]
     conditions:
       Vvdd:
         typical: 3.3
@@ -548,21 +537,19 @@ parameters:
     display: Gain Margin
     unit: dB
     spec:
-      minimum:
-        value: any
-      typical:
-        value: -100
-      maximum:
-        value: any
+      result:
+        minimum:
+          value: any
+        typical:
+          value: -100
+        maximum:
+          value: any
     tool:
       ngspice:
         template: gbw.sch
         format: ascii
         suffix: .data
-        variables:
-        - null
-        - null
-        - result
+        variables: [null, null, result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -584,19 +571,19 @@ parameters:
     display: Equivalent Input Noise Voltage @ 1kHz
     unit: nV/√Hz
     spec:
-      minimum:
-        value: any
-      typical:
-        value: 280
-      maximum:
-        value: any
+      result:
+        minimum:
+          value: any
+        typical:
+          value: 280
+        maximum:
+          value: any
     tool:
       ngspice:
         template: eqvnoise.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -620,19 +607,19 @@ parameters:
     display: Equivalent Input Noise Voltage @ 10kHz
     unit: nV/√Hz
     spec:
-      minimum:
-        value: any
-      typical:
-        value: 100
-      maximum:
-        value: any
+      result:
+        minimum:
+          value: any
+        typical:
+          value: 100
+        maximum:
+          value: any
     tool:
       ngspice:
         template: eqvnoise.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -656,20 +643,20 @@ parameters:
     display: CMRR @ 100kHz
     unit: dB
     spec:
-      maximum:
-        value: -40
-        fail: true
-      typical:
-        value: any
-      minimum:
-        value: any
+      result:
+        maximum:
+          value: -40
+          fail: true
+        typical:
+          value: any
+        minimum:
+          value: any
     tool:
       ngspice:
         template: cmrr.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         typical: 3.3
@@ -695,20 +682,20 @@ parameters:
     display: PSRR @ 100kHz
     unit: dB
     spec:
-      maximum:
-        value: -14
-        fail: true
-      typical:
-        value: any
-      minimum:
-        value: any
+      result:
+        maximum:
+          value: -14
+          fail: true
+        typical:
+          value: any
+        minimum:
+          value: any
     tool:
       ngspice:
         template: psrr.sch
         format: ascii
         suffix: .data
-        variables:
-        - result
+        variables: [result]
     conditions:
       Vvdd:
         minimum: 2.3
@@ -741,14 +728,11 @@ parameters:
         template: transient.sch
         format: ascii
         suffix: .data
-        variables:
-        - time
-        - result
-        - Vinp
+        variables: [time, Vout, Vinp]
     plot:
-      filename: transient.png
-      xaxis: time
-      yaxis: result
+      transient:
+        xaxis: time
+        yaxis: [Vout, Vinp]
     variables:
       time:
         display: Time
@@ -773,42 +757,36 @@ parameters:
         typical: tt
         maximum: ff
 
-  area:
-    description: Total circuit layout area
-    display: Area
-    unit: µm²
+  magic_area:
     spec:
-      maximum:
-        value: any
+      area:
+        display: Area
+        description: Total circuit layout area
+        unit: µm²
+        maximum:
+          value: any
+      width:
+        display: Width
+        description: Total circuit layout width
+        unit: µm
+        maximum:
+          value: any
+      height:
+        display: Height
+        description: Total circuit layout height
+        unit: µm
+        maximum:
+          value: any
     tool:
       magic_area
-
-  width:
-    description: Total circuit layout width
-    display: Width
-    unit: µm
-    spec:
-      maximum:
-        value: any
-    tool:
-      magic_width
-
-  height:
-    description: Total circuit layout height
-    display: Height
-    unit: µm
-    spec:
-      maximum:
-        value: any
-    tool:
-      magic_height
 
   magic_drc:
     description: Magic DRC
     display: Magic DRC
     spec:
-      maximum:
-        value: 0
+      drc_errors:
+        maximum:
+          value: 0
     tool:
       magic_drc
 
@@ -816,8 +794,9 @@ parameters:
     description: Netgen LVS
     display: Netgen LVS
     spec:
-      maximum:
-        value: 0
+      lvs_errors:
+        maximum:
+          value: 0
     tool:
       netgen_lvs:
         script: run_project_lvs.tcl
@@ -826,8 +805,9 @@ parameters:
     description: KLayout DRC feol
     display: KLayout DRC feol
     spec:
-      maximum:
-        value: 0
+      drc_errors:
+        maximum:
+          value: 0
     tool:
         klayout_drc:
             args: ['-rd', 'feol=true']
@@ -836,8 +816,9 @@ parameters:
     description: KLayout DRC beol
     display: KLayout DRC beol
     spec:
-      maximum:
-        value: 0
+      drc_errors:
+        maximum:
+          value: 0
     tool:
         klayout_drc:
             args: ['-rd', 'beol=true']
@@ -846,8 +827,9 @@ parameters:
     description: KLayout DRC full
     display: KLayout DRC full
     spec:
-      maximum:
-        value: 0
+      drc_errors:
+        maximum:
+          value: 0
     tool:
         klayout_drc:
             args: ['-rd', 'feol=true', '-rd', 'beol=true', '-rd', 'offgrid=true']
