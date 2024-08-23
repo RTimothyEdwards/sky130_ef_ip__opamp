@@ -1,11 +1,10 @@
-# Analog IP design example: Operational amplifier
+# Analog IP design example: Operational amplifier ![](../../workflows/cace/badge.svg)
 
 This is a simple operational amplifier demonstrating the use
 of the CACE system. It requires [CACE](https://github.com/efabless/cace) to run the testbenches.
 
-[Design Documentation](docs/sky130_ef_ip__opamp.md)
-
-[Characterization](docs/sky130_ef_ip__opamp_rcx.md)
+- [Documentation](docs/sky130_ef_ip__opamp.md)
+- [Characterization](docs/sky130_ef_ip__opamp_rcx.md)
 
 Schematics for this amplifier are done in xschem and can be found in the `xschem/` directory. Layouts for this amplifier are done in magic and can be found in the `mag/` directory.
 
